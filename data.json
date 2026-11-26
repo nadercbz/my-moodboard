@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "profile": [
+    {
+      "id": "nader",
+      "name": "Nader",
+      "farbe": "#111111"
+    },
+    {
+      "id": "social-bites",
+      "name": "Social Bites",
+      "farbe": "#e4572e"
+    },
+    {
+      "id": "kunden",
+      "name": "Kunden",
+      "farbe": "#3b6cf6"
+    }
+  ],
+  "boards": [
+    {
+      "id": "swiss-minimal",
+      "profil": "nader",
+      "name": "Swiss Minimal",
+      "beschreibung": "Raster, viel Weißraum, eine starke Schrift. Für Portfolios und Agentur Seiten."
+    },
+    {
+      "id": "dark-editorial",
+      "profil": "nader",
+      "name": "Dark Editorial",
+      "beschreibung": "Schwarz, Serif Headlines, Film Look. Für Premium Marken und Gastro."
+    },
+    {
+      "id": "soft-ui",
+      "profil": "nader",
+      "name": "Soft UI Apps",
+      "beschreibung": "Helle Flächen, runde Karten, ruhige Pastells. Für Web Apps und Dashboards."
+    },
+    {
+      "id": "motion-refs",
+      "profil": "nader",
+      "name": "Motion und Scroll",
+      "beschreibung": "Videos und Scroll Animationen, die ich wiederverwenden will."
+    },
+    {
+      "id": "food-bold",
+      "profil": "social-bites",
+      "name": "Food Bold",
+      "beschreibung": "Laute Farben, große Typo, Food Content mit Energie."
+    },
+    {
+      "id": "kunden-vorlagen",
+      "profil": "kunden",
+      "name": "Vorlagen für Pitches",
+      "beschreibung": "Stile, die ich Kunden als Richtung zeige."
+    }
+  ],
+  "pins": [
+    {
+      "id": "swiss-minimal-1",
+      "board": "swiss-minimal",
+      "typ": "farben",
+      "titel": "Papier und Tinte",
+      "tags": [
+        "minimal",
+        "website",
+        "hell"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#f5f4f0",
+        "#e3e1da",
+        "#111111",
+        "#ff3b1f"
+      ]
+    },
+    {
+      "id": "swiss-minimal-2",
+      "board": "swiss-minimal",
+      "typ": "schrift",
+      "titel": "Headline",
+      "tags": [
+        "minimal",
+        "typo"
+      ],
+      "datum": "2026-11-26",
+      "schrift": "Inter Tight",
+      "beispiel": "Weniger, aber besser."
+    },
+    {
+      "id": "swiss-minimal-3",
+      "board": "swiss-minimal",
+      "typ": "notiz",
+      "titel": "",
+      "tags": [
+        "minimal",
+        "regel"
+      ],
+      "datum": "2026-11-26",
+      "notiz": "12er Raster, Ränder 24 px.\nEine Schrift in zwei Stärken.\nEin einziger Akzent, nie mehr.\nBilder randlos, Text linksbündig."
+    },
+    {
+      "id": "swiss-minimal-4",
+      "board": "swiss-minimal",
+      "typ": "schrift",
+      "titel": "Mono Details",
+      "tags": [
+        "minimal",
+        "typo"
+      ],
+      "datum": "2026-11-26",
+      "schrift": "JetBrains Mono",
+      "beispiel": "Index 01  Projekt  2026"
+    },
+    {
+      "id": "dark-editorial-5",
+      "board": "dark-editorial",
+      "typ": "farben",
+      "titel": "Kupfer und Rauch",
+      "tags": [
+        "dark",
+        "premium",
+        "gastro"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#0b0b0b",
+        "#1c1a18",
+        "#b87333",
+        "#e9dcc9"
+      ]
+    },
+    {
+      "id": "dark-editorial-6",
+      "board": "dark-editorial",
+      "typ": "schrift",
+      "titel": "Serif Headline",
+      "tags": [
+        "dark",
+        "typo",
+        "editorial"
+      ],
+      "datum": "2026-11-26",
+      "schrift": "Instrument Serif",
+      "beispiel": "Geschmack braucht Zeit."
+    },
+    {
+      "id": "dark-editorial-7",
+      "board": "dark-editorial",
+      "typ": "notiz",
+      "titel": "",
+      "tags": [
+        "dark",
+        "regel"
+      ],
+      "datum": "2026-11-26",
+      "notiz": "Serif riesig, Fließtext klein und grotesk.\nKörnung auf Bildern, langsame Fades.\nGold nur als Linie, nie als Fläche."
+    },
+    {
+      "id": "dark-editorial-8",
+      "board": "dark-editorial",
+      "typ": "farben",
+      "titel": "Nachtblau",
+      "tags": [
+        "dark",
+        "premium"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#0a0f1a",
+        "#16213a",
+        "#c9a96e",
+        "#f2efe8"
+      ]
+    },
+    {
+      "id": "soft-ui-9",
+      "board": "soft-ui",
+      "typ": "farben",
+      "titel": "Salbei und Sand",
+      "tags": [
+        "app",
+        "hell",
+        "pastell"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#f7f5f0",
+        "#dfe6dc",
+        "#a8b8a0",
+        "#2f3a2f"
+      ]
+    },
+    {
+      "id": "soft-ui-10",
+      "board": "soft-ui",
+      "typ": "schrift",
+      "titel": "UI Schrift",
+      "tags": [
+        "app",
+        "typo"
+      ],
+      "datum": "2026-11-26",
+      "schrift": "Plus Jakarta Sans",
+      "beispiel": "Guten Morgen, Nader"
+    },
+    {
+      "id": "soft-ui-11",
+      "board": "soft-ui",
+      "typ": "notiz",
+      "titel": "",
+      "tags": [
+        "app",
+        "regel"
+      ],
+      "datum": "2026-11-26",
+      "notiz": "Radius 16 bis 20 px.\nSchatten fast unsichtbar.\nZahlen groß, Labels klein und grau."
+    },
+    {
+      "id": "soft-ui-12",
+      "board": "soft-ui",
+      "typ": "farben",
+      "titel": "Lavendel",
+      "tags": [
+        "app",
+        "pastell"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#faf8ff",
+        "#e9e3ff",
+        "#b7a6f5",
+        "#2b2440"
+      ]
+    },
+    {
+      "id": "motion-refs-13",
+      "board": "motion-refs",
+      "typ": "notiz",
+      "titel": "",
+      "tags": [
+        "motion",
+        "scroll",
+        "regel"
+      ],
+      "datum": "2026-11-26",
+      "notiz": "Hier landen Scroll Sequenzen, Hero Videos und Übergänge.\nSchick mir Links oder Clips, ich pflege sie ein."
+    },
+    {
+      "id": "food-bold-14",
+      "board": "food-bold",
+      "typ": "farben",
+      "titel": "Ketchup Pop",
+      "tags": [
+        "food",
+        "bold",
+        "social"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#ff2e1f",
+        "#ffd23f",
+        "#111111",
+        "#fff8ec"
+      ]
+    },
+    {
+      "id": "food-bold-15",
+      "board": "food-bold",
+      "typ": "schrift",
+      "titel": "Fette Headline",
+      "tags": [
+        "food",
+        "bold",
+        "typo"
+      ],
+      "datum": "2026-11-26",
+      "schrift": "Anton",
+      "beispiel": "KNUSPRIG. LAUT. JETZT."
+    },
+    {
+      "id": "food-bold-16",
+      "board": "food-bold",
+      "typ": "farben",
+      "titel": "Matcha Neon",
+      "tags": [
+        "food",
+        "social"
+      ],
+      "datum": "2026-11-26",
+      "farben": [
+        "#0e2a1b",
+        "#3ddc84",
+        "#e8ffd9",
+        "#ff6fb5"
+      ]
+    },
+    {
+      "id": "kunden-vorlagen-17",
+      "board": "kunden-vorlagen",
+      "typ": "notiz",
+      "titel": "",
+      "tags": [
+        "pitch"
+      ],
+      "datum": "2026-11-26",
+      "notiz": "Pro Kunde drei Richtungen zeigen: sicher, mutig, wild.\nJede Richtung mit Farbe, Schrift und einem Bewegungsbeispiel."
+    },
+    {
+      "id": "kunden-vorlagen-18",
+      "board": "kunden-vorlagen",
+      "typ": "schrift",
+      "titel": "Freundlich rund",
+      "tags": [
+        "pitch",
+        "typo"
+      ],
+      "datum": "2026-11-26",
+      "schrift": "Fraunces",
+      "beispiel": "Willkommen zuhause."
+    }
+  ]
+}

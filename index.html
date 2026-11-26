@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Moodboard</title>
+<meta name="theme-color" content="#fafaf9">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='11' height='15' rx='3' fill='%23111'/><rect x='18' y='3' width='11' height='9' rx='3' fill='%23111'/><rect x='3' y='21' width='11' height='8' rx='3' fill='%23111'/><rect x='18' y='15' width='11' height='14' rx='3' fill='%23111'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafaf9; --fg:#111; --mut:#8a8a86; --line:#e7e7e4; --card:#fff; --soft:#f1f1ef; --accent:#111;
+  --r:14px; --gap:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0e0e0e; --fg:#f2f2f0; --mut:#7d7d79; --line:#232323; --card:#171717; --soft:#1d1d1d; --accent:#f2f2f0; }
+}
+:root[data-theme="dark"]{ --bg:#0e0e0e; --fg:#f2f2f0; --mut:#7d7d79; --line:#232323; --card:#171717; --soft:#1d1d1d; --accent:#f2f2f0; }
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:15px/1.45 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+a{color:inherit}
+.hidden{display:none!important}
+
+/* Kopf */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.bar{max-width:1600px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:14px 24px}
+.logo{font-weight:600;letter-spacing:-.02em;font-size:16px;white-space:nowrap}
+.suche{flex:1;max-width:520px;margin:0 auto;position:relative}
+.suche input{width:100%;height:40px;border-radius:999px;border:1px solid transparent;background:var(--soft);padding:0 16px 0 40px;outline:none;transition:border-color .2s}
+.suche input:focus{border-color:var(--line);background:var(--card)}
+.suche svg{position:absolute;left:14px;top:12px;width:16px;height:16px;color:var(--mut)}
+.icon{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;transition:background .2s;flex:none}
+.icon:hover{background:var(--soft)}
+.icon svg{width:18px;height:18px}
+.plus{background:var(--accent);color:var(--bg)}
+.plus:hover{background:var(--accent);opacity:.85}
+.profil{display:flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 4px;border-radius:999px;transition:background .2s}
+.profil:hover{background:var(--soft)}
+.ava{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:600;color:#fff;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.profil span{font-size:14px;font-weight:500}
+
+nav.tabs{max-width:1600px;margin:0 auto;padding:0 24px 12px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.chip{height:32px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:500;white-space:nowrap;color:var(--mut);transition:all .2s}
+.chip:hover{color:var(--fg)}
+.chip.an{background:var(--fg);color:var(--bg)}
+
+main{max-width:1600px;margin:0 auto;padding:10px 24px 80px}
+
+/* Board Kopf */
+.kopf{padding:28px 0 26px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.kopf h1{font-size:clamp(28px,4vw,44px);letter-spacing:-.035em;font-weight:600;margin:0;line-height:1.05}
+.kopf p{margin:8px 0 0;color:var(--mut);max-width:560px}
+.zurueck{font-size:13px;color:var(--mut);display:inline-flex;gap:6px;align-items:center;margin-bottom:12px}
+.zurueck:hover{color:var(--fg)}
+.leise{font-size:13px;color:var(--mut)}
+.knopf{height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:500;transition:all .2s;white-space:nowrap}
+.knopf:hover{border-color:var(--fg)}
+.knopf.voll{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* Boards Raster */
+.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px 20px}
+.board{text-align:left;display:block}
+.cover{aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:var(--soft);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.board:hover .cover{transform:scale(.985)}
+.cover>div{background:var(--soft);overflow:hidden;position:relative}
+.cover>div:first-child{grid-row:1/3}
+.cover img,.cover video{width:100%;height:100%;object-fit:cover;display:block}
+.board h3{margin:12px 0 2px;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.neuboard .cover{display:grid;place-items:center;grid-template-columns:1fr;grid-template-rows:1fr;border:1px dashed var(--line);background:transparent;color:var(--mut)}
+
+/* Masonry */
+.masonry{column-gap:var(--gap);columns:5 220px}
+.pin{break-inside:avoid;margin:0 0 var(--gap);display:block;width:100%;text-align:left;position:relative;cursor:zoom-in}
+.pin .m{border-radius:var(--r);overflow:hidden;background:var(--soft);position:relative;transform:translateZ(0)}
+.pin img,.pin video{width:100%;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.pin:hover img,.pin:hover video{transform:scale(1.03)}
+.pin .t{font-size:13px;font-weight:500;margin:8px 2px 0;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pin .t small{display:block;font-weight:400;color:var(--mut);font-size:12px}
+.badge{position:absolute;left:10px;top:10px;height:24px;padding:0 9px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:500;display:flex;align-items:center;gap:5px;backdrop-filter:blur(6px)}
+.badge svg{width:11px;height:11px}
+.lokal{left:auto;right:10px;background:#e4572e}
+.pal{display:flex;flex-direction:column;aspect-ratio:3/4}
+.pal div{flex:1}
+.schrift{padding:26px 20px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.schrift .gross{font-size:64px;line-height:1;letter-spacing:-.03em}
+.schrift .klein{font-size:13px;color:var(--mut);margin-top:16px}
+.notiz{padding:22px 20px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);font-size:15px;line-height:1.5;white-space:pre-wrap}
+.linkkarte{padding:22px 20px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+.linkkarte b{font-size:17px;letter-spacing:-.01em;font-weight:600}
+.linkkarte span{font-size:12px;color:var(--mut);margin-top:18px}
+.leer{padding:80px 0;text-align:center;color:var(--mut)}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:24px;animation:ein .25s ease}
+@keyframes ein{from{opacity:0}}
+.lbin{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;max-width:1300px;width:100%;max-height:calc(100vh - 48px)}
+.lbmedia{display:flex;align-items:center;justify-content:center;min-height:0}
+.lbmedia>*{max-width:100%;max-height:calc(100vh - 48px);border-radius:var(--r);display:block}
+.lbmedia iframe{width:100%;aspect-ratio:16/9;border:0;height:auto}
+.lbmedia .pal{width:min(420px,100%);border-radius:var(--r);overflow:hidden;aspect-ratio:auto;height:min(560px,70vh)}
+.lbmedia .pal div{display:flex;align-items:flex-end;padding:14px 16px;font-size:13px;font-weight:500;cursor:copy}
+.lbmedia .schrift,.lbmedia .notiz,.lbmedia .linkkarte{width:min(560px,100%)}
+.lbinfo{overflow:auto;padding-top:8px}
+.lbinfo h2{font-size:24px;letter-spacing:-.025em;margin:0 0 6px;font-weight:600;line-height:1.15}
+.lbinfo .zeile{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0}
+.tag{height:28px;padding:0 12px;border-radius:999px;background:var(--soft);font-size:12px;display:inline-flex;align-items:center}
+.lbinfo p{color:var(--fg);opacity:.85;white-space:pre-wrap}
+.zu{position:fixed;top:16px;right:16px;z-index:60}
+.pfeil{position:fixed;top:50%;z-index:60;transform:translateY(-50%)}
+.pfeil.l{left:12px}.pfeil.r{right:12px}
+
+/* Dialoge */
+dialog{border:0;border-radius:20px;padding:0;background:var(--card);color:var(--fg);width:min(520px,calc(100vw - 32px));box-shadow:0 30px 80px rgba(0,0,0,.18)}
+dialog::backdrop{background:rgba(0,0,0,.25);backdrop-filter:blur(4px)}
+.dlg{padding:26px}
+.dlg h2{margin:0 0 18px;font-size:20px;letter-spacing:-.02em;font-weight:600}
+.seg{display:flex;gap:4px;padding:4px;background:var(--soft);border-radius:999px;margin-bottom:18px}
+.seg button{flex:1;height:32px;border-radius:999px;font-size:13px;font-weight:500;color:var(--mut)}
+.seg button.an{background:var(--card);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+label{display:block;font-size:12px;font-weight:500;color:var(--mut);margin:14px 0 6px}
+.feld{width:100%;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--bg);padding:0 14px;outline:none}
+textarea.feld{height:90px;padding:10px 14px;resize:vertical}
+.feld:focus{border-color:var(--fg)}
+.drop{border:1px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--mut);font-size:13px;cursor:pointer}
+.drop.ueber{border-color:var(--fg);color:var(--fg)}
+.aktion{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
+.menue{position:absolute;top:58px;right:24px;width:260px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 20px 50px rgba(0,0,0,.12);z-index:30}
+.menue button{width:100%;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:14px;text-align:left}
+.menue button:hover{background:var(--soft)}
+.menue hr{border:0;border-top:1px solid var(--line);margin:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:13px;z-index:90;animation:ein .2s;width:max-content;max-width:calc(100vw - 32px);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+
+@media (max-width:760px){
+  .bar{padding:12px 16px;gap:8px}
+  .logo{display:none}
+  .profil span{display:none}
+  nav.tabs,main{padding-left:16px;padding-right:16px}
+  .masonry{columns:2;--gap:10px}
+  .boards{grid-template-columns:repeat(2,1fr);gap:20px 12px}
+  .kopf{flex-direction:column;align-items:flex-start}
+  .lb{align-items:flex-start;overflow:auto;padding:64px 16px 32px}
+  .lbin{grid-template-columns:1fr;max-height:none;gap:20px}
+  .lbmedia>*{max-height:70vh}
+  .pfeil{display:none}
+  .menue{right:16px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <button class="logo" id="home">My Moodboard</button>
+    <div class="suche">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" placeholder="Stile, Farben, Tags suchen" autocomplete="off">
+    </div>
+    <button class="icon plus" id="neu" title="Neuer Pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button>
+    <button class="profil" id="profilknopf"><div class="ava" id="ava"></div><span id="profilname"></span></button>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+  <div class="menue hidden" id="menue"></div>
+</header>
+<main id="main"></main>
+
+<dialog id="dneu"><form class="dlg" method="dialog" id="fneu">
+  <h2>Neuer Pin</h2>
+  <div class="seg" id="seg">
+    <button type="button" data-t="link" class="an">Link</button>
+    <button type="button" data-t="datei">Datei</button>
+    <button type="button" data-t="farben">Farben</button>
+    <button type="button" data-t="schrift">Schrift</button>
+    <button type="button" data-t="notiz">Notiz</button>
+  </div>
+  <div data-f="link"><label>URL (Bild, Video, YouTube, Vimeo oder Website)</label><input class="feld" name="url" placeholder="https://"></div>
+  <div data-f="datei" class="hidden"><div class="drop" id="drop">Bild oder Video hierher ziehen oder tippen<input type="file" id="datei" accept="image/*,video/*" hidden></div></div>
+  <div data-f="farben" class="hidden"><label>Farben, durch Komma getrennt</label><input class="feld" name="farben" placeholder="#111111, #f4efe6, #d94f30"></div>
+  <div data-f="schrift" class="hidden"><label>Google Font Name</label><input class="feld" name="schrift" placeholder="Instrument Serif"></div>
+  <div data-f="notiz" class="hidden"><label>Notiz</label><textarea class="feld" name="notiztext" placeholder="Was macht den Stil aus?"></textarea></div>
+  <label>Titel</label><input class="feld" name="titel" placeholder="Optional">
+  <label>Board</label><select class="feld" name="board" id="boardwahl"></select>
+  <label>Tags</label><input class="feld" name="tags" placeholder="minimal, dark, website">
+  <div class="aktion"><button type="button" class="knopf" data-zu>Abbrechen</button><button class="knopf voll" id="speichern">Speichern</button></div>
+</form></dialog>
+
+<dialog id="dboard"><form class="dlg" method="dialog" id="fboard">
+  <h2 id="dboardtitel">Neues Board</h2>
+  <label>Name</label><input class="feld" name="name" required placeholder="z. B. Dark Editorial">
+  <label>Beschreibung</label><input class="feld" name="beschreibung" placeholder="Optional">
+  <div class="aktion"><button type="button" class="knopf" data-zu>Abbrechen</button><button class="knopf voll">Anlegen</button></div>
+</form></dialog>
+
+<dialog id="dprofil"><form class="dlg" method="dialog" id="fprofil">
+  <h2>Neues Profil</h2>
+  <label>Name</label><input class="feld" name="name" required placeholder="z. B. Social Bites">
+  <div class="aktion"><button type="button" class="knopf" data-zu>Abbrechen</button><button class="knopf voll">Anlegen</button></div>
+</form></dialog>
+
+<script>
+const REPO = "nadercbz/my-moodboard", ZWEIG = "main";
+const API = `https://api.github.com/repos/${REPO}/contents/`;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const lies = k => { try { return localStorage.getItem(k) } catch { return null } };
+const schreib = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v) } catch {} };
+const b64ToText = b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\n/g, "")), c => c.charCodeAt(0)));
+const textToB64 = t => { const b = new TextEncoder().encode(t); let s = ""; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode(...b.subarray(i, i + 0x8000)); return btoa(s); };
+const FARBEN = ["#111111","#e4572e","#3b6cf6","#2a9d8f","#9b5de5","#c08b3e","#ef476f","#4a4e69"];
+const heute = () => new Date().toISOString().slice(0, 10);
+const neueId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+
+let daten = { profile: [], boards: [], pins: [] }, sha = null;
+let lokal = JSON.parse(lies("lokal") || '{"boards":[],"pins":[],"profile":[]}');
+let zustand = { profil: lies("profil"), ansicht: "boards", board: null, tag: null, q: "" };
+let aktuelleListe = [], lbIndex = -1;
+
+const alle = k => [...daten[k], ...lokal[k].map(x => ({ ...x, _lokal: true }))];
+const profil = () => alle("profile").find(p => p.id === zustand.profil) || alle("profile")[0];
+const boardsVon = pid => alle("boards").filter(b => b.profil === pid);
+const pinsVonBoard = bid => alle("pins").filter(p => p.board === bid).sort((a, b) => (b.datum || "").localeCompare(a.datum || ""));
+const pinsVonProfil = pid => { const ids = new Set(boardsVon(pid).map(b => b.id)); return alle("pins").filter(p => ids.has(p.board)).sort((a, b) => (b.datum || "").localeCompare(a.datum || "")); };
+
+function toast(t) { const d = document.createElement("div"); d.className = "toast"; d.textContent = t; document.body.append(d); setTimeout(() => d.remove(), 2600); }
+
+/* Laden */
+async function laden() {
+  const token = lies("token");
+  try {
+    if (token) {
+      const r = await fetch(API + "data.json?ref=" + ZWEIG, { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" }, cache: "no-store" });
+      if (!r.ok) throw new Error(r.status);
+      const j = await r.json(); sha = j.sha; daten = JSON.parse(b64ToText(j.content));
+    } else {
+      const r = await fetch("data.json?" + Date.now()); daten = await r.json();
+    }
+  } catch (e) {
+    try { const r = await fetch("data.json?" + Date.now()); daten = await r.json(); } catch {}
+    if (token) toast("Schlüssel ungültig oder offline, lese öffentliche Daten");
+  }
+  if (!zustand.profil || !profil() || profil().id !== zustand.profil) zustand.profil = profil()?.id;
+  ausHash(); zeichnen();
+}
+
+/* Speichern nach GitHub */
+async function ghPut(pfad, b64, msg, altSha) {
+  const r = await fetch(API + pfad, { method: "PUT", headers: { Authorization: `Bearer ${lies("token")}`, Accept: "application/vnd.github+json" },
+    body: JSON.stringify({ message: msg, content: b64, branch: ZWEIG, ...(altSha ? { sha: altSha } : {}) }) });
+  if (!r.ok) throw new Error((await r.json().catch(() => ({}))).message || r.status);
+  return (await r.json()).content.sha;
+}
+async function datenSichern(msg, aenderung) {
+  // frisch holen, Änderung anwenden, schreiben (vermeidet Konflikte zwischen Geräten)
+  const r = await fetch(API + "data.json?ref=" + ZWEIG, { headers: { Authorization: `Bearer ${lies("token")}`, Accept: "application/vnd.github+json" }, cache: "no-store" });
+  if (!r.ok) throw new Error("Lesen fehlgeschlagen " + r.status);
+  const j = await r.json(); daten = JSON.parse(b64ToText(j.content));
+  aenderung(daten);
+  sha = await ghPut("data.json", textToB64(JSON.stringify(daten, null, 2) + "\n"), msg, j.sha);
+}
+function lokalSichern() { schreib("lokal", JSON.stringify(lokal)); }
+
+async function hinzufuegen(art, obj, msg) {
+  if (lies("token")) {
+    try { await datenSichern(msg, d => d[art].push(obj)); toast("Gespeichert"); zeichnen(); return; }
+    catch (e) { toast("GitHub Fehler: " + e.message + ". Lokal gespeichert"); }
+  }
+  lokal[art].push(obj); lokalSichern(); zeichnen();
+  if (!lies("token")) toast("Nur auf diesem Gerät gespeichert. Schlüssel fehlt");
+}
+async function loeschen(pin) {
+  if (!confirm("Pin löschen?")) return;
+  if (pin._lokal) { lokal.pins = lokal.pins.filter(p => p.id !== pin.id); lokalSichern(); }
+  else {
+    if (!lies("token")) return toast("Zum Löschen brauchst du den Schlüssel");
+    try { await datenSichern("Pin gelöscht", d => d.pins = d.pins.filter(p => p.id !== pin.id)); } catch (e) { return toast("Fehler: " + e.message); }
+  }
+  schliessen(); zeichnen(); toast("Gelöscht");
+}
+async function lokalHochladen() {
+  if (!lies("token")) return toast("Erst Schlüssel eintragen");
+  const n = lokal.pins.length + lokal.boards.length + lokal.profile.length;
+  if (!n) return toast("Nichts Lokales vorhanden");
+  try {
+    await datenSichern(`${n} lokale Einträge übernommen`, d => { ["profile","boards","pins"].forEach(k => d[k].push(...lokal[k])); });
+    lokal = { boards: [], pins: [], profile: [] }; lokalSichern(); zeichnen(); toast("Alles hochgeladen");
+  } catch (e) { toast("Fehler: " + e.message); }
+}
+
+/* Medien erkennen */
+function ytId(u) { const m = String(u).match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/); return m && m[1]; }
+function vimeoId(u) { const m = String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/); return m && m[1]; }
+function istVideo(u) { return /\.(mp4|webm|mov|m4v)(\?|$)/i.test(u); }
+function istBild(u) { return /\.(jpe?g|png|gif|webp|avif|svg)(\?|$)/i.test(u) || /images\.unsplash\.com|i\.pinimg\.com/.test(u); }
+function host(u) { try { return new URL(u).hostname.replace(/^www\./, "") } catch { return u } }
+const ladeFont = f => { if (!f || document.querySelector(`link[data-f="${f}"]`)) return; const l = document.createElement("link"); l.rel = "stylesheet"; l.dataset.f = f; l.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(f).replace(/%20/g, "+")}&display=swap`; document.head.append(l); };
+
+const ICO = {
+  play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>',
+  link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>',
+};
+
+/* Darstellung eines Pins */
+function pinMedia(p, gross) {
+  const t = p.typ;
+  if (t === "farben") return `<div class="pal">${(p.farben || []).map(f => `<div style="background:${esc(f)}" data-hex="${esc(f)}">${gross ? `<span style="color:${hell(f) ? "#111" : "#fff"}">${esc(f)}</span>` : ""}</div>`).join("")}</div>`;
+  if (t === "schrift") { ladeFont(p.schrift); return `<div class="schrift" style="font-family:'${esc(p.schrift)}',serif"><div class="gross">Aa</div><div>${esc(p.beispiel || "Die Form folgt dem Gefühl.")}<div class="klein" style="font-family:Inter">${esc(p.schrift)}</div></div></div>`; }
+  if (t === "notiz") return `<div class="notiz">${esc(p.notiz)}</div>`;
+  if (t === "video") {
+    const yt = ytId(p.url), vi = vimeoId(p.url);
+    if (gross && yt) return `<iframe src="https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    if (gross && vi) return `<iframe src="https://player.vimeo.com/video/${vi}?autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    if (p.src) return gross ? `<video src="${esc(p.src)}" ${p.poster ? `poster="${esc(p.poster)}"` : ""} controls autoplay loop playsinline></video>`
+                            : `<video src="${esc(p.src)}#t=0.1" ${p.poster ? `poster="${esc(p.poster)}"` : ""} muted loop playsinline preload="metadata"></video>`;
+    const th = p.poster || (yt && `https://i.ytimg.com/vi/${yt}/hqdefault.jpg`);
+    if (th) return `<img src="${esc(th)}" loading="lazy" alt="">`;
+    return `<div class="linkkarte"><b>${esc(p.titel || "Video")}</b><span>${esc(host(p.url))}</span></div>`;
+  }
+  if (t === "bild") return `<img src="${esc(p.src || p.url)}" loading="lazy" alt="${esc(p.titel)}">`;
+  // link
+  if (p.bild) return `<img src="${esc(p.bild)}" loading="lazy" alt="">`;
+  return `<div class="linkkarte"><b>${esc(p.titel || host(p.url))}</b><span>${esc(host(p.url))} ↗</span></div>`;
+}
+function hell(hex) { const h = String(hex).replace("#", ""); if (h.length < 6) return true; const [r, g, b] = [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); return (r * 299 + g * 587 + b * 114) / 1000 > 150; }
+const kastenTyp = p => ["farben", "bild", "video"].includes(p.typ) || (p.typ === "link" && p.bild);
+
+function pinHtml(p, i) {
+  const badge = p.typ === "video" ? `<div class="badge">${ICO.play}Video</div>` : p.typ === "link" && p.bild ? `<div class="badge">${ICO.link}${esc(host(p.url))}</div>` : "";
+  const media = pinMedia(p, false);
+  const inner = kastenTyp(p) ? `<div class="m">${media}${badge}${p._lokal ? '<div class="badge lokal">lokal</div>' : ""}</div>` : `<div style="position:relative">${media}${p._lokal ? '<div class="badge lokal">lokal</div>' : ""}</div>`;
+  const titel = p.titel && !["notiz"].includes(p.typ) ? `<div class="t">${esc(p.titel)}${p.quelle ? `<small>${esc(p.quelle)}</small>` : ""}</div>` : "";
+  return `<button class="pin" data-i="${i}">${inner}${titel}</button>`;
+}
+
+function filtern(liste) {
+  const q = zustand.q.trim().toLowerCase();
+  return liste.filter(p => (!zustand.tag || (p.tags || []).includes(zustand.tag)) &&
+    (!q || [p.titel, p.notiz, p.schrift, p.quelle, p.url, ...(p.tags || []), ...(p.farben || []), alle("boards").find(b => b.id === p.board)?.name].join(" ").toLowerCase().includes(q)));
+}
+
+function masonry(liste) {
+  aktuelleListe = filtern(liste);
+  if (!aktuelleListe.length) return `<div class="leer">${zustand.q || zustand.tag ? "Nichts gefunden." : "Noch leer. Tippe auf +, oder schick mir Material zum Einpflegen."}</div>`;
+  return `<div class="masonry">${aktuelleListe.map(pinHtml).join("")}</div>`;
+}
+
+function tagLeiste(liste) {
+  const z = {}; liste.forEach(p => (p.tags || []).forEach(t => z[t] = (z[t] || 0) + 1));
+  const tags = Object.entries(z).sort((a, b) => b[1] - a[1]).slice(0, 24).map(x => x[0]);
+  return `<button class="chip ${!zustand.tag ? "an" : ""}" data-tag="">Alle</button>` + tags.map(t => `<button class="chip ${zustand.tag === t ? "an" : ""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("");
+}
+
+function coverHtml(b) {
+  const ps = pinsVonBoard(b.id).filter(kastenTyp).slice(0, 3);
+  const fuell = i => { const p = ps[i]; if (!p) return "<div></div>"; return `<div>${pinMedia(p, false).replace("<video ", "<video autoplay ")}</div>`; };
+  return `<div class="cover">${fuell(0)}${fuell(1)}${fuell(2)}</div>`;
+}
+
+/* Zeichnen */
+function zeichnen() {
+  const pr = profil(); if (!pr) { $("main").innerHTML = '<div class="leer">Keine Daten.</div>'; return; }
+  const idx = alle("profile").findIndex(p => p.id === pr.id);
+  $("ava").textContent = pr.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+  $("ava").style.background = pr.farbe || FARBEN[idx % FARBEN.length];
+  $("profilname").textContent = pr.name;
+  const boards = boardsVon(pr.id);
+  const tabs = [["boards", "Boards"], ["alle", "Alle Pins"], ["videos", "Videos"]];
+  let html = "", tagquelle = [];
+
+  if (zustand.ansicht === "board") {
+    const b = alle("boards").find(x => x.id === zustand.board);
+    if (!b) { zustand.ansicht = "boards"; return zeichnen(); }
+    const ps = pinsVonBoard(b.id); tagquelle = ps;
+    html = `<div class="kopf"><div><button class="zurueck" data-go="boards">← Boards</button><h1>${esc(b.name)}</h1>${b.beschreibung ? `<p>${esc(b.beschreibung)}</p>` : ""}<p class="leise">${ps.length} Pins</p></div>
+      <button class="knopf voll" data-neu-im-board>Pin hinzufügen</button></div>${masonry(ps)}`;
+  } else if (zustand.ansicht === "alle" || zustand.ansicht === "videos" || zustand.q) {
+    let ps = pinsVonProfil(pr.id); if (zustand.ansicht === "videos") ps = ps.filter(p => p.typ === "video");
+    tagquelle = ps;
+    html = `<div class="kopf"><div><h1>${zustand.q ? `„${esc(zustand.q)}“` : zustand.ansicht === "videos" ? "Videos" : "Alle Pins"}</h1><p class="leise">${filtern(ps).length} Pins in ${esc(pr.name)}</p></div></div>${masonry(ps)}`;
+  } else {
+    html = `<div class="kopf"><div><h1>${esc(pr.name)}</h1><p class="leise">${boards.length} Boards · ${pinsVonProfil(pr.id).length} Pins</p></div></div>
+      <div class="boards">${boards.map(b => `<button class="board" data-board="${b.id}">${coverHtml(b)}<h3>${esc(b.name)}</h3><div class="leise">${pinsVonBoard(b.id).length} Pins${b._lokal ? " · lokal" : ""}</div></button>`).join("")}
+      <button class="board neuboard" data-neuboard><div class="cover"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></div><h3>Neues Board</h3></button></div>`;
+  }
+  const aktiv = zustand.ansicht === "board" ? "" : zustand.ansicht;
+  $("tabs").innerHTML = tabs.map(([k, n]) => `<button class="chip ${aktiv === k && !zustand.q ? "an" : ""}" data-go="${k}">${n}</button>`).join("")
+    + (zustand.ansicht !== "boards" && tagquelle.length ? `<span style="width:1px;background:var(--line);margin:6px 6px;flex:none"></span>` + tagLeiste(tagquelle) : "");
+  $("main").innerHTML = html;
+  videosBeobachten();
+  schreibHash();
+}
+
+/* Videos nur abspielen wenn sichtbar */
+let beob;
+function videosBeobachten() {
+  beob?.disconnect();
+  beob = new IntersectionObserver(es => es.forEach(e => { const v = e.target; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: .3 });
+  document.querySelectorAll("main video").forEach(v => { v.muted = true; beob.observe(v); });
+}
+
+/* Lightbox */
+function oeffnen(i) {
+  lbIndex = i; const p = aktuelleListe[i]; if (!p) return;
+  schliessen(true);
+  const b = alle("boards").find(x => x.id === p.board);
+  const d = document.createElement("div"); d.className = "lb"; d.id = "lb";
+  d.innerHTML = `<button class="icon zu" data-lbzu title="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    ${aktuelleListe.length > 1 ? `<button class="icon pfeil l" data-lb="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg></button><button class="icon pfeil r" data-lb="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>` : ""}
+    <div class="lbin"><div class="lbmedia">${pinMedia(p, true)}</div>
+    <div class="lbinfo"><div class="leise">${esc(b?.name || "")} · ${esc(p.datum || "")}</div>
+      <h2>${esc(p.titel || ({ farben: "Farbpalette", schrift: p.schrift, notiz: "Notiz" }[p.typ] || "Ohne Titel"))}</h2>
+      ${p.quelle ? `<div class="leise">${esc(p.quelle)}</div>` : ""}
+      ${p.notiz && p.typ !== "notiz" ? `<p>${esc(p.notiz)}</p>` : ""}
+      ${(p.tags || []).length ? `<div class="zeile">${p.tags.map(t => `<button class="tag" data-tagsuche="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : ""}
+      ${p.typ === "farben" ? `<p class="leise">Tippe auf eine Farbe, um den Hex Wert zu kopieren.</p>` : ""}
+      <div class="zeile">${p.url ? `<a class="knopf" style="display:inline-flex;align-items:center;text-decoration:none" href="${esc(p.url)}" target="_blank" rel="noopener">Quelle öffnen ↗</a>` : ""}
+      <button class="knopf" data-loeschen>Löschen</button></div>
+    </div></div>`;
+  document.body.append(d); document.body.style.overflow = "hidden";
+  d.querySelector("[data-loeschen]").onclick = () => loeschen(p);
+}
+function schliessen(still) { const l = $("lb"); if (l) { l.remove(); document.body.style.overflow = ""; } if (!still) lbIndex = -1; }
+
+/* Navigation über Hash */
+function schreibHash() { const h = zustand.ansicht === "board" ? `#b/${zustand.board}` : zustand.ansicht === "boards" ? "" : `#${zustand.ansicht}`; if (location.hash !== h) history.replaceState(null, "", h || location.pathname); }
+function ausHash() {
+  const h = location.hash.slice(1);
+  if (h.startsWith("b/")) { const b = alle("boards").find(x => x.id === h.slice(2)); if (b) { zustand.ansicht = "board"; zustand.board = b.id; zustand.profil = b.profil; } }
+  else if (["alle", "videos"].includes(h)) zustand.ansicht = h;
+}
+
+/* Profil Menü */
+function menue() {
+  const m = $("menue"); if (!m.classList.contains("hidden")) return m.classList.add("hidden");
+  const ps = alle("profile"), token = lies("token"), n = lokal.pins.length + lokal.boards.length + lokal.profile.length;
+  m.innerHTML = ps.map((p, i) => `<button data-profil="${p.id}"><div class="ava" style="width:26px;height:26px;font-size:10px;background:${p.farbe || FARBEN[i % FARBEN.length]}">${esc(p.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase())}</div>${esc(p.name)}${p.id === zustand.profil ? ' <span style="margin-left:auto">✓</span>' : ""}</button>`).join("")
+    + `<button data-neuprofil><span style="width:26px;text-align:center">+</span>Profil anlegen</button><hr>
+    <button data-thema>Hell / Dunkel</button>
+    <button data-token>${token ? "Schlüssel ändern ✓" : "Schlüssel eintragen"}</button>
+    ${n ? `<button data-hochladen>${n} lokale Einträge hochladen</button>` : ""}`;
+  m.classList.remove("hidden");
+}
+
+/* Neuer Pin */
+let neuTyp = "link", neuDatei = null;
+function neuDialog(boardId) {
+  const pr = profil(), bs = boardsVon(pr.id);
+  if (!bs.length) { toast("Leg zuerst ein Board an"); return $("dboard").showModal(); }
+  $("boardwahl").innerHTML = bs.map(b => `<option value="${b.id}" ${b.id === (boardId || zustand.board) ? "selected" : ""}>${esc(b.name)}</option>`).join("");
+  $("fneu").reset(); neuDatei = null; $("drop").firstChild.textContent = "Bild oder Video hierher ziehen oder tippen"; setzeTyp("link");
+  $("dneu").showModal();
+}
+function setzeTyp(t) { neuTyp = t; document.querySelectorAll("#seg button").forEach(b => b.classList.toggle("an", b.dataset.t === t)); document.querySelectorAll("[data-f]").forEach(f => f.classList.toggle("hidden", f.dataset.f !== t)); }
+function dateiSetzen(f) { if (!f) return; neuDatei = f; $("drop").firstChild.textContent = `${f.name} · ${(f.size / 1048576).toFixed(1)} MB`; }
+
+async function neuSpeichern(e) {
+  e.preventDefault();
+  const f = new FormData($("fneu"));
+  const p = { id: neueId(), board: f.get("board"), titel: f.get("titel").trim(), tags: f.get("tags").split(",").map(s => s.trim().toLowerCase()).filter(Boolean), datum: heute() };
+  if (neuTyp === "link") {
+    const u = f.get("url").trim(); if (!u) return toast("URL fehlt");
+    p.url = u;
+    if (ytId(u) || vimeoId(u) || istVideo(u)) { p.typ = "video"; if (istVideo(u)) p.src = u; }
+    else if (istBild(u)) { p.typ = "bild"; p.src = u; }
+    else p.typ = "link";
+  } else if (neuTyp === "datei") {
+    if (!neuDatei) return toast("Keine Datei gewählt");
+    if (!lies("token")) return toast("Dateien brauchen den Schlüssel (Profil Menü)");
+    if (neuDatei.size > 40 * 1048576) return toast("Zu groß für den Browser. Schick sie mir, ich komprimiere sie");
+    const endung = (neuDatei.name.split(".").pop() || "bin").toLowerCase();
+    const pfad = `media/${p.id}.${endung}`;
+    $("speichern").textContent = "Lädt hoch …"; $("speichern").disabled = true;
+    try {
+      const buf = new Uint8Array(await neuDatei.arrayBuffer()); let s = ""; for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode(...buf.subarray(i, i + 0x8000));
+      await ghPut(pfad, btoa(s), "Neue Datei " + neuDatei.name);
+    } catch (err) { $("speichern").textContent = "Speichern"; $("speichern").disabled = false; return toast("Upload Fehler: " + err.message); }
+    $("speichern").textContent = "Speichern"; $("speichern").disabled = false;
+    p.typ = neuDatei.type.startsWith("video") ? "video" : "bild"; p.src = pfad;
+  } else if (neuTyp === "farben") {
+    p.typ = "farben"; p.farben = f.get("farben").split(/[,\s]+/).map(s => s.trim()).filter(Boolean).map(s => s.startsWith("#") ? s : "#" + s);
+    if (!p.farben.length) return toast("Farben fehlen");
+  } else if (neuTyp === "schrift") {
+    p.typ = "schrift"; p.schrift = f.get("schrift").trim(); if (!p.schrift) return toast("Schrift fehlt");
+  } else { p.typ = "notiz"; p.notiz = f.get("notiztext").trim(); if (!p.notiz) return toast("Notiz fehlt"); }
+  $("dneu").close();
+  await hinzufuegen("pins", p, "Neuer Pin: " + (p.titel || p.typ));
+}
+
+/* Ereignisse */
+document.addEventListener("click", e => {
+  const z = e.target.closest("[data-zu]"); if (z) return z.closest("dialog").close();
+  const go = e.target.closest("[data-go]"); if (go) { zustand.ansicht = go.dataset.go; zustand.tag = null; zustand.q = ""; $("q").value = ""; scrollTo(0, 0); return zeichnen(); }
+  const bd = e.target.closest("[data-board]"); if (bd) { zustand.ansicht = "board"; zustand.board = bd.dataset.board; zustand.tag = null; scrollTo(0, 0); return zeichnen(); }
+  const tg = e.target.closest("[data-tag]"); if (tg) { zustand.tag = tg.dataset.tag || null; return zeichnen(); }
+  const ts = e.target.closest("[data-tagsuche]"); if (ts) { schliessen(); zustand.ansicht = "alle"; zustand.tag = ts.dataset.tagsuche; zustand.q = ""; $("q").value = ""; return zeichnen(); }
+  const pin = e.target.closest(".pin"); if (pin) return oeffnen(+pin.dataset.i);
+  if (e.target.closest("[data-lbzu]") || e.target.id === "lb" || e.target.classList.contains("lbin") || e.target.classList.contains("lbmedia")) return schliessen();
+  const lb = e.target.closest("[data-lb]"); if (lb) return oeffnen((lbIndex + +lb.dataset.lb + aktuelleListe.length) % aktuelleListe.length);
+  const hex = e.target.closest("[data-hex]"); if (hex && $("lb")) { navigator.clipboard?.writeText(hex.dataset.hex); return toast(hex.dataset.hex + " kopiert"); }
+  if (e.target.closest("[data-neuboard]")) return $("dboard").showModal();
+  if (e.target.closest("[data-neu-im-board]")) return neuDialog(zustand.board);
+  const pf = e.target.closest("[data-profil]"); if (pf) { zustand.profil = pf.dataset.profil; schreib("profil", zustand.profil); zustand.ansicht = "boards"; zustand.tag = null; $("menue").classList.add("hidden"); return zeichnen(); }
+  if (e.target.closest("[data-neuprofil]")) { $("menue").classList.add("hidden"); return $("dprofil").showModal(); }
+  if (e.target.closest("[data-thema]")) { const d = document.documentElement, dunkel = d.dataset.theme ? d.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; d.dataset.theme = dunkel ? "light" : "dark"; schreib("thema", d.dataset.theme); return; }
+  if (e.target.closest("[data-token]")) {
+    $("menue").classList.add("hidden");
+    const t = prompt("GitHub Schlüssel (fine-grained token, nur Repo my-moodboard, Recht Contents: Read and write). Leer lassen zum Entfernen:");
+    if (t === null) return; schreib("token", t.trim() || null); toast(t.trim() ? "Schlüssel gespeichert" : "Schlüssel entfernt"); return laden();
+  }
+  if (e.target.closest("[data-hochladen]")) { $("menue").classList.add("hidden"); return lokalHochladen(); }
+  if (!e.target.closest("#menue") && !e.target.closest("#profilknopf")) $("menue").classList.add("hidden");
+});
+$("profilknopf").onclick = menue;
+$("home").onclick = () => { zustand.ansicht = "boards"; zustand.q = ""; zustand.tag = null; $("q").value = ""; zeichnen(); };
+$("neu").onclick = () => neuDialog();
+$("seg").onclick = e => { const b = e.target.closest("button"); if (b) setzeTyp(b.dataset.t); };
+$("drop").onclick = () => $("datei").click();
+$("datei").onchange = e => dateiSetzen(e.target.files[0]);
+["dragover", "dragenter"].forEach(n => $("drop").addEventListener(n, e => { e.preventDefault(); $("drop").classList.add("ueber"); }));
+["dragleave", "drop"].forEach(n => $("drop").addEventListener(n, e => { e.preventDefault(); $("drop").classList.remove("ueber"); if (n === "drop") dateiSetzen(e.dataTransfer.files[0]); }));
+$("fneu").onsubmit = neuSpeichern;
+$("fboard").onsubmit = async e => {
+  e.preventDefault(); const f = new FormData(e.target); $("dboard").close();
+  const name = f.get("name").trim(); if (!name) return;
+  const b = { id: name.toLowerCase().normalize("NFD").replace(/[^\w]+/g, "-").replace(/^-|-$/g, "") + "-" + neueId().slice(-4), profil: zustand.profil, name, beschreibung: f.get("beschreibung").trim() };
+  await hinzufuegen("boards", b, "Neues Board: " + name); e.target.reset();
+  zustand.ansicht = "board"; zustand.board = b.id; zeichnen();
+};
+$("fprofil").onsubmit = async e => {
+  e.preventDefault(); const f = new FormData(e.target); $("dprofil").close();
+  const name = f.get("name").trim(); if (!name) return;
+  const p = { id: name.toLowerCase().normalize("NFD").replace(/[^\w]+/g, "-").replace(/^-|-$/g, "") || neueId(), name };
+  await hinzufuegen("profile", p, "Neues Profil: " + name); e.target.reset();
+  zustand.profil = p.id; schreib("profil", p.id); zustand.ansicht = "boards"; zeichnen();
+};
+let qt; $("q").oninput = e => { clearTimeout(qt); qt = setTimeout(() => { zustand.q = e.target.value; zeichnen(); }, 120); };
+document.addEventListener("keydown", e => {
+  if ($("lb")) { if (e.key === "Escape") schliessen(); if (e.key === "ArrowRight") oeffnen((lbIndex + 1) % aktuelleListe.length); if (e.key === "ArrowLeft") oeffnen((lbIndex - 1 + aktuelleListe.length) % aktuelleListe.length); return; }
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") { e.preventDefault(); $("q").focus(); }
+});
+document.addEventListener("paste", e => { // URL einfügen öffnet direkt den Dialog
+  if (document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA" || $("dneu").open) return;
+  const t = e.clipboardData.getData("text"); if (/^https?:\/\//.test(t)) { neuDialog(); $("fneu").url.value = t; }
+});
+window.addEventListener("hashchange", () => { ausHash(); zeichnen(); });
+{ const t = lies("thema"); if (t) document.documentElement.dataset.theme = t; }
+laden();
+</script>
+</body>
+</html>
